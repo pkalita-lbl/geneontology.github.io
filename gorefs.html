@@ -1,5 +1,6 @@
 ---
 layout: default
+permalink: /gorefs.html
 ---
 
 <div class="container">
@@ -14,9 +15,11 @@ layout: default
         {% endunless %}
     {% endif %}
 
-    {% for goref in site.data.gorefs %}
-    <hr>
-    {% include goref.html goref=goref %}
-    {% endfor %}
+    <ul>
+        {% for goref in site.data.gorefs %}
+            <li>
+                <a href="{{ goref.id | datapage_url: 'gorefs' }}">[{{ goref.id }}] {{ goref.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
 </div>
-
