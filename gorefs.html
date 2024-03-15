@@ -1,0 +1,25 @@
+---
+layout: default
+permalink: /gorefs.html
+---
+
+<div class="container">
+    <h1>GO REFs</h1>
+    <p>This is a collection of references used by the GO Consortium</p>
+
+    {% if jekyll.environment == "development" %}
+        {% unless site.data.gorefs %}
+            <div class="alert alert-warning">
+                <strong>Warning!</strong> No GO_REFs found. Did you run <code>make _data/gorefs.yml</code>?
+            </div>
+        {% endunless %}
+    {% endif %}
+
+    <ul>
+        {% for goref in site.data.gorefs %}
+            <li>
+                <a href="{{ goref.id | datapage_url: 'gorefs' }}">[{{ goref.id }}] {{ goref.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
